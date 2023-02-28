@@ -3,7 +3,7 @@
         "editorRuler.foreground": "#363636"
     },
     "editor.fontSize": 17,
-    "editor.fontFamily": "monolisa light",
+    "editor.fontFamily": "Monolisa light",
     "editor.letterSpacing": 0.3,
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
