@@ -8,7 +8,6 @@
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     "vim.vimrc.enable": true,
-    "vim.vimrc.path": "C:\\Users\\amith\\OneDrive\\projects\\ffmpegmobile\\.vimrc",
     "terminal.integrated.profiles.windows": {
         "Git Bash":{
             "path":"C:\\Program Files\\Git\\git-bash.exe",
