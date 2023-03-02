@@ -15,7 +15,7 @@
         }
     },
     "terminal.integrated.fontSize": 16,
-    "python.defaultInterpreterPath": ".\\venv\\Scripts\\python",
+    "python.defaultInterpreterPath": ".venv\\Scripts\\python",
     "python.formatting.provider": "black",
     "[python]": {
         "editor.rulers": [80],
