@@ -49,37 +49,41 @@ def run_script():
         )
         command_list.extend(["-t", duration])
 
-    # Video compression
-    compress_video = "yes"
-    compress_video = input("Compress video? [yes]: ")
-    if compress_video == "yes":
-        # Set CRF
-        crf_value = input("Enter CRF value between 0 to 51: ")
-        if int(crf_value) not in range(52):
-            print("You didn't enter correct preset value!Exiting..")
-            sys.exit()
-        command_list.extend(["-crf", crf_value])
+        # Video compression
+        compress_video = "yes"
+        compress_video = input("Compress video? [yes]: ")
+        if compress_video == "yes":
+            # Set CRF
+            crf_value = input("Enter CRF value between 0 to 51: ")
+            if int(crf_value) not in range(52):
+                print("You didn't enter correct preset value!Exiting..")
+                sys.exit()
+            command_list.extend(["-crf", crf_value])
 
-        # Change codec
-        change_vcodec = input("Change vcodec?: ")
-        if change_vcodec == "yes":
-            video_codec = input("Enter video codec value [none]: ")
-            if not video_codec:
-                print(
-                    """You didn't enter codec value we will continue without
-                     changing video codec."""
-                )
-            else:
-                command_list.extend(["-vcodec", video_codec])
+            # Change codec
+            change_vcodec = input("Change vcodec?: ")
+            if change_vcodec == "yes":
+                video_codec = input("Enter video codec value [none]: ")
+                if not video_codec:
+                    print(
+                        """You didn't enter codec value we will continue without
+                        changing video codec."""
+                    )
+                else:
+                    command_list.extend(["-vcodec", video_codec])
 
-            audio_codec = input("Enter audio codec value [none]: ")
-            if not audio_codec:
-                print(
-                    """You didn't enter codec value we will continue without
-                     changing audio codec."""
-                )
-            else:
-                command_list.extend(["-acodec", audio_codec])
+                audio_codec = input("Enter audio codec value [none]: ")
+                if not audio_codec:
+                    print(
+                        """You didn't enter codec value we will continue without
+                        changing audio codec."""
+                    )
+                else:
+                    command_list.extend(["-acodec", audio_codec])
+
+                trimmed_file = f"{filename}-{crf_value}-CRF-{extension}"
+        else:
+            trimmed_file = f"{filename}{extension}"
 
         # Set preset
         possible_preset_values = [
@@ -102,9 +106,7 @@ def run_script():
             print("You didn't enter correct preset value!\nExiting..")
             sys.exit()
 
-        command_list.extend(
-            ["-preset", preset, f"{filename}-{crf_value}CRF{extension}"]
-        )
+        command_list.extend(["-preset", preset, trimmed_file])
         FfmpegProcess(command_list).run()
 
     # Smooth video
@@ -112,9 +114,9 @@ def run_script():
     smooth_video = input("Make video smooth? [yes]: ")
     if smooth_video == "yes":
         smooth_command_list = ["ffmpeg"]
-        if compress_video == "yes":
+        if trim_video == "yes":
             smooth_command_list.extend(
-                ["-i", f"{filename}-{crf_value}CRF{extension}"],
+                ["-i", trimmed_file],
             )
         else:
             smooth_command_list.extend(["-i", input_file])
