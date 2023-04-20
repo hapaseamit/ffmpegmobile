@@ -2,8 +2,8 @@
     "workbench.colorCustomizations": {
         "editorRuler.foreground": "#363636"
     },
-    "editor.fontSize": 16,
-    "editor.fontFamily": "Monolisa Light",
+    "editor.fontSize": 18,
+    "editor.fontFamily": "Fira Mono",
     "editor.letterSpacing": 0.3,
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
