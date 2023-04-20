@@ -120,11 +120,11 @@ def run_script():
             smooth_command_list.extend(["-i", input_file])
             if trim_video == "yes":
                 smooth_command_list.extend(["-ss", start_time, "-t", duration])
-        crf_value = input("Enter CRF value between 0 to 51: ")
-        if int(crf_value) not in range(52):
-            print("You didn't enter correct preset value!\nExiting..")
-            sys.exit()
-        smooth_command_list.extend(["-crf", crf_value])
+        # crf_value = input("Enter CRF value between 0 to 51: ")
+        # if int(crf_value) not in range(52):
+        #     print("You didn't enter correct preset value!\nExiting..")
+        #     sys.exit()
+        # smooth_command_list.extend(["-crf", crf_value])
         fps_value = input("Enter FPS value between 10 to 90: ")
         if int(fps_value) not in range(10, 91):
             print("You didn't enter correct FPS value!\nExiting..")
@@ -138,7 +138,10 @@ def run_script():
             [
                 "-vf",
                 video_filters,
-                f"{filename}-{crf_value}CRF-{fps_value}FPS{extension}",
+                "-c:a",
+                "copy",
+                "-c:s",
+                "copy" f"{filename}-{crf_value}CRF-{fps_value}FPS{extension}",
             ]
         )
         FfmpegProcess(smooth_command_list).run()
