@@ -141,7 +141,8 @@ def run_script():
                 "-c:a",
                 "copy",
                 "-c:s",
-                "copy" f"{filename}-{crf_value}CRF-{fps_value}FPS{extension}",
+                "copy",
+                f"{filename}-{fps_value}FPS{extension}",
             ]
         )
         FfmpegProcess(smooth_command_list).run()
