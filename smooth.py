@@ -23,11 +23,6 @@ def run_script():
         if ans == "yes":
             extension = ".mp4"
 
-    crf_value = input("Enter CRF value between 0 to 51: ")
-    if int(crf_value) not in range(52):
-        print("You didn't enter correct preset value!\nExiting..")
-        sys.exit()
-
     fps_value = input("Enter FPS value between 10 to 90: ")
     if int(fps_value) not in range(10, 91):
         print("You didn't enter correct FPS value!\nExiting..")
@@ -43,10 +38,12 @@ def run_script():
         "ffmpeg",
         "-i",
         input_file,
-        "-crf",
-        crf_value,
         "-vf",
         video_filters,
+        "-c:a",
+        "copy",
+        "-c:s",
+        "copy",
         f"{filename}-{fps_value}FPS{extension}",
     ]
 

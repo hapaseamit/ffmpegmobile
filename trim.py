@@ -47,7 +47,13 @@ def run_script():
         start_time,
         "-t",
         duration,
-        f"{filename}{extension}",
+        "-c:v",
+        "copy",
+        "-c:a",
+        "copy",
+        "-c:s",
+        "copy",
+        f"{filename}-trimmed{extension}",
     ]
     FfmpegProcess(command_list).run()
 
